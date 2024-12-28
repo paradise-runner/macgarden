@@ -45,4 +45,5 @@ jobs:
           filename: macgarden-coverage.json
           label: coverage
           message: ${{ env.COVERAGE }}%
-          color: ${{ job.status == 'success' && env.COVERAGE >= 80 ? 'success' : 'failure' }}
+          color: >-
+            ${{ env.COVERAGE >= 80 && 'success' || 'critical' }}
