@@ -1,9 +1,9 @@
 # Macgarden ![Mac Garden Screenshot](example.png)
 
 ![License](https://img.shields.io/badge/license-GPL--3.0-yellow)
-![Next.js](https://img.shields.io/badge/Next.js-13.4-green)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.3.2-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-4.9.5-blue)
+![Next.js](https://img.shields.io/badge/Next.js-15.1-green)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4.1-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
 ![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-orange)
 [![Tests](https://github.com/paradise-runner/macgarden/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/paradise-runner/macgarden/actions/workflows/test.yml)
 
