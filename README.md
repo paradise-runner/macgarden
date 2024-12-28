@@ -5,7 +5,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.3.2-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-4.9.5-blue)
 ![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-orange)
-![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/paradise-runner/c98e952b992d7ee35c453fddfd7e2f5e/raw/macgarden-coverage.json)
+[![Run Tests](https://github.com/paradise-runner/macgarden/actions/workflows/test.yml/badge.svg)](https://github.com/paradise-runner/macgarden/actions/workflows/test.yml)
 
 ## Table of Contents
 
