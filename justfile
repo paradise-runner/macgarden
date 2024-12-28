@@ -15,3 +15,5 @@ fresh-start:
     just download && just update && just start
 fresh-deploy:
     just download && just update && just deploy
+test:
+    bun run test:e2e
