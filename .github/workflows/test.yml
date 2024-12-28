@@ -1,4 +1,4 @@
-name: Run Tests
+name: Tests
 
 on:
   push:
@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - 'src/**'
-      - '.github/workflows/test.yml'
 
 jobs:
   test:
