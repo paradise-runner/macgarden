@@ -48,6 +48,22 @@ Before you begin, ensure you have:
   ```
   just deploy
   ```
+- To update the data from data.json into src/lib/devices.ts, run:
+  ```
+  just update
+  ```
+- To start the development server with a fresh data fetch, run:
+  ```
+  just fresh-start
+  ```
+- To deploy the project with a fresh data fetch, run:
+  ```
+  just fresh-deploy
+  ```
+- To run tests, run:
+  ```
+  just test
+  ```
 
 ## Deployment
 
