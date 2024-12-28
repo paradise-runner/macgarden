@@ -1,4 +1,4 @@
-# Macgarden ![Example Image](example.png)
+# Macgarden ![Mac Garden Screenshot](example.png)
 
 ![License](https://img.shields.io/badge/license-GPL--3.0-yellow)
 ![Next.js](https://img.shields.io/badge/Next.js-13.4-green)
@@ -9,7 +9,9 @@
 ## Table of Contents
 
 - [Overview](#overview)
+- [Prerequisites](#prerequisites)
 - [Usage](#usage)
+- [Deployment](#deployment)
 - [Technologies Used](#technologies-used)
 - [Comparing Devices](#comparing-devices)
 - [Contributing](#contributing)
@@ -18,6 +20,14 @@
 ## Overview
 
 A simple website showing Mac performance data. The data is fetched from the Geekbench Browser API and displayed in a user-friendly way for easy comparison. The website is built using Next.js, Tailwind CSS, and TypeScript. It is hosted on Cloudflare Pages. The data is fetched and stored in a JSON file for faster loading times.
+
+## Prerequisites
+
+Before you begin, ensure you have:
+- [Bun](https://bun.sh/) installed
+- [Just](https://just.systems/man/en/) command runner installed
+- A Cloudflare account for deployment
+- Geekbench Browser API access (for data fetching)
 
 ## Usage
 
@@ -37,6 +47,19 @@ A simple website showing Mac performance data. The data is fetched from the Geek
   ```
   just deploy
   ```
+
+## Deployment
+
+This project is configured for Cloudflare Pages deployment:
+
+- Build command: `just build`
+
+### Manual Deployment
+
+1. Fork this repository
+2. Connect it to Cloudflare Pages
+3. Configure your build settings
+4. Deploy!
 
 ## Technologies Used
 
@@ -64,4 +87,3 @@ Feel free to open issues or submit pull requests for improvements.
 ## License
 
 This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details.
-```
