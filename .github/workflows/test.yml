@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'src/**'
+      - '/.github/workflows/test.yml'
 
 jobs:
   test:
@@ -30,3 +31,18 @@ jobs:
 
       - name: Run tests
         run: bun run test:e2e
+
+      - name: Generate coverage badge
+        run: |
+          COVERAGE=$(cat coverage/coverage-summary.json | jq -r '.total.lines.pct')
+          echo "COVERAGE=$COVERAGE" >> $GITHUB_ENV
+          
+      - name: Create coverage badge
+        uses: schneegans/dynamic-badges-action@v1.6.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: c98e952b992d7ee35c453fddfd7e2f5e
+          filename: macgarden-coverage.json
+          label: coverage
+          message: ${{ env.COVERAGE }}%
+          color: ${{ job.status == 'success' && env.COVERAGE >= 80 ? 'success' : 'failure' }}
