@@ -15,6 +15,7 @@
 - [Deployment](#deployment)
 - [Technologies Used](#technologies-used)
 - [Comparing Devices](#comparing-devices)
+- [Coming Soon](#coming-soon)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -96,6 +97,15 @@ On the main page, you can:
 - View percentage differences in performance at a glance.
 
 Enjoy exploring Mac performance stats!
+
+## Coming Soon
+
+Exciting features in development:
+- Search functionality in device selection dropdowns
+- Filter devices by release year
+- Performance trend visualization
+- Dark mode support
+- Export comparison data
 
 ## Contributing
 
