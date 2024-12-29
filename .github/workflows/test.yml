@@ -29,5 +29,14 @@ jobs:
       - name: Install Cypress
         run: bun add cypress --dev && bun run cypress install
 
-      - name: Run tests
+      - name: Run tests with coverage
         run: bun run test:e2e
+
+      - name: Generate coverage report
+        run: bun run test:coverage
+
+      - name: Upload coverage reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/

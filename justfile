@@ -17,3 +17,9 @@ fresh-deploy:
     just download && just update && just deploy
 test:
     bun run test:e2e
+lint:
+    bun run lint
+fmt:
+    bun run format
+check:
+     bun run check-formatting && just lint
