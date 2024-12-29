@@ -9,7 +9,7 @@
     "lint": "next lint",
     "cypress:open": "cypress open",
     "pages:build": "npx @cloudflare/next-on-pages",
-    "preview": "export NODE_OPTIONS=--max_old_space_size=15096 && bun run pages:build && wrangler pages dev",
+    "preview": "bun run pages:build && wrangler pages dev",
     "deploy": "bun run pages:build && wrangler pages deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
     "test:e2e": "start-server-and-test dev http://localhost:3000 'cypress run'"
