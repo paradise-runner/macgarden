@@ -6,6 +6,8 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
 ![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-orange)
 [![Tests](https://github.com/paradise-runner/macgarden/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/paradise-runner/macgarden/actions/workflows/test.yml)
+[![Code Quality](https://github.com/paradise-runner/macgarden/actions/workflows/code-quality.yml/badge.svg?branch=main)](https://github.com/paradise-runner/macgarden/actions/workflows/code-quality.yml)
+[![codecov](https://codecov.io/gh/paradise-runner/macgarden/graph/badge.svg)](https://codecov.io/gh/paradise-runner/macgarden)
 
 ## Table of Contents
 
