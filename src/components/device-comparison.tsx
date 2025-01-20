@@ -46,10 +46,10 @@ export function DeviceComparison({
 
 					// get a new constant that shows the comparison as a whole number comparison like 2x or 3x to make it bit more readable
 					const singleCoreComparisonWholeNumber = Number(
-						(device.score / compareWith.score).toFixed(1)
+						(device.score / compareWith.score).toFixed(1),
 					);
 					const multiCoreComparisonWholeNumber = Number(
-						(device.multicore_score / compareWith.multicore_score).toFixed(1)
+						(device.multicore_score / compareWith.multicore_score).toFixed(1),
 					);
 
 					return (
@@ -64,7 +64,9 @@ export function DeviceComparison({
 									<div className="flex justify-between items-center">
 										<p>Single-Core Score: {device.score}</p>
 										<div className="text-right">
-											<span className={getComparisonColor(singleCoreComparison)}>
+											<span
+												className={getComparisonColor(singleCoreComparison)}
+											>
 												{getComparisonText(singleCoreComparison)}
 											</span>
 											{singleCoreComparisonWholeNumber > 1 && (

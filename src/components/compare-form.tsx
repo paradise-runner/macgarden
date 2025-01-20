@@ -79,7 +79,11 @@ export function CompareForm({ initialDevices = [null, null] }: Props) {
 								</SelectTrigger>
 								<SelectContent>
 									{devices
-										.filter((d) => selectedTypes.length === 0 || selectedTypes.some(type => d.name.includes(type)))
+										.filter(
+											(d) =>
+												selectedTypes.length === 0 ||
+												selectedTypes.some((type) => d.name.includes(type)),
+										)
 										.map((device) => (
 											<SelectItem
 												key={`${device.name}:${device.description}`}
