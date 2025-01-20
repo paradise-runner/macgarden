@@ -44,6 +44,14 @@ export function DeviceComparison({
 						),
 					);
 
+					// get a new constant that shows the comparison as a whole number comparison like 2x or 3x to make it bit more readable
+					const singleCoreComparisonWholeNumber = Number(
+						(device.score / compareWith.score).toFixed(1)
+					);
+					const multiCoreComparisonWholeNumber = Number(
+						(device.multicore_score / compareWith.multicore_score).toFixed(1)
+					);
+
 					return (
 						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 						<Card key={index}>
@@ -55,15 +63,29 @@ export function DeviceComparison({
 								<div className="space-y-2">
 									<div className="flex justify-between items-center">
 										<p>Single-Core Score: {device.score}</p>
-										<span className={getComparisonColor(singleCoreComparison)}>
-											{getComparisonText(singleCoreComparison)}
-										</span>
+										<div className="text-right">
+											<span className={getComparisonColor(singleCoreComparison)}>
+												{getComparisonText(singleCoreComparison)}
+											</span>
+											{singleCoreComparisonWholeNumber > 1 && (
+												<span className="ml-2 text-sm text-gray-600">
+													({singleCoreComparisonWholeNumber}x)
+												</span>
+											)}
+										</div>
 									</div>
 									<div className="flex justify-between items-center">
 										<p>Multi-Core Score: {device.multicore_score}</p>
-										<span className={getComparisonColor(multiCoreComparison)}>
-											{getComparisonText(multiCoreComparison)}
-										</span>
+										<div className="text-right">
+											<span className={getComparisonColor(multiCoreComparison)}>
+												{getComparisonText(multiCoreComparison)}
+											</span>
+											{multiCoreComparisonWholeNumber > 1 && (
+												<span className="ml-2 text-sm text-gray-600">
+													({multiCoreComparisonWholeNumber}x)
+												</span>
+											)}
+										</div>
 									</div>
 									<p>Samples: {device.samples}</p>
 								</div>

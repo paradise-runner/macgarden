@@ -24,7 +24,7 @@ export function CompareForm({ initialDevices = [null, null] }: Props) {
 	const [devices, setDevices] = useState<Device[]>([]);
 	const [selectedDevices, setSelectedDevices] =
 		useState<(Device | null)[]>(initialDevices);
-	const [selectedType, setSelectedType] = useState<string>("");
+	const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
 
 	useEffect(() => {
 		getDevices().then(setDevices);
@@ -44,9 +44,9 @@ export function CompareForm({ initialDevices = [null, null] }: Props) {
 		<Card>
 			<CardContent className="space-y-6 pt-6">
 				<ToggleGroup
-					type="single"
-					value={selectedType}
-					onValueChange={setSelectedType}
+					type="multiple"
+					value={selectedTypes}
+					onValueChange={setSelectedTypes}
 				>
 					{modelTypes.map((type) => (
 						<ToggleGroupItem key={type} value={type} size="sm">
@@ -79,7 +79,7 @@ export function CompareForm({ initialDevices = [null, null] }: Props) {
 								</SelectTrigger>
 								<SelectContent>
 									{devices
-										.filter((d) => d.name.includes(selectedType))
+										.filter((d) => selectedTypes.length === 0 || selectedTypes.some(type => d.name.includes(type)))
 										.map((device) => (
 											<SelectItem
 												key={`${device.name}:${device.description}`}
