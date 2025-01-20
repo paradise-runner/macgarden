@@ -1,6 +1,7 @@
 import type { Device } from "@/lib/devices";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DownloadDataButton } from "./download-data-button";
 
 interface Props {
 	device1: Device;
@@ -29,28 +30,43 @@ export function DeviceComparison({
 		return value >= 0 ? "text-green-600" : "text-red-600";
 	};
 
-	return (
-		<div className="device-comparison space-y-8">
-			<div className="grid mt-8 md:grid-cols-2 gap-8">
-				{[device1, device2].map((device, index) => {
-					const compareWith = index === 0 ? device2 : device1;
-					const singleCoreComparison = Number(
-						getRelativePerformance(device.score, compareWith.score),
-					);
-					const multiCoreComparison = Number(
-						getRelativePerformance(
-							device.multicore_score,
-							compareWith.multicore_score,
-						),
-					);
+	const device1Comparisons = {
+		singleCore: Number(getRelativePerformance(device1.score, device2.score)),
+		multiCore: Number(
+			getRelativePerformance(device1.multicore_score, device2.multicore_score),
+		),
+		singleCoreMultiplier: Number((device1.score / device2.score).toFixed(1)),
+		multiCoreMultiplier: Number(
+			(device1.multicore_score / device2.multicore_score).toFixed(1),
+		),
+	};
 
-					// get a new constant that shows the comparison as a whole number comparison like 2x or 3x to make it bit more readable
-					const singleCoreComparisonWholeNumber = Number(
-						(device.score / compareWith.score).toFixed(1),
-					);
-					const multiCoreComparisonWholeNumber = Number(
-						(device.multicore_score / compareWith.multicore_score).toFixed(1),
-					);
+	const device2Comparisons = {
+		singleCore: Number(getRelativePerformance(device2.score, device1.score)),
+		multiCore: Number(
+			getRelativePerformance(device2.multicore_score, device1.multicore_score),
+		),
+		singleCoreMultiplier: Number((device2.score / device1.score).toFixed(1)),
+		multiCoreMultiplier: Number(
+			(device2.multicore_score / device1.multicore_score).toFixed(1),
+		),
+	};
+
+	return (
+		<div className="device-comparison space-y-8 mt-8">
+			<div className="flex justify-end">
+				<DownloadDataButton
+					devices={[device1, device2]}
+					comparisons={{
+						device1: device1Comparisons,
+						device2: device2Comparisons,
+					}}
+				/>
+			</div>
+			<div className="grid md:grid-cols-2 gap-8">
+				{[device1, device2].map((device, index) => {
+					const comparisons =
+						index === 0 ? device1Comparisons : device2Comparisons;
 
 					return (
 						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
@@ -65,13 +81,13 @@ export function DeviceComparison({
 										<p>Single-Core Score: {device.score}</p>
 										<div className="text-right">
 											<span
-												className={getComparisonColor(singleCoreComparison)}
+												className={getComparisonColor(comparisons.singleCore)}
 											>
-												{getComparisonText(singleCoreComparison)}
+												{getComparisonText(comparisons.singleCore)}
 											</span>
-											{singleCoreComparisonWholeNumber > 1 && (
+											{comparisons.singleCoreMultiplier > 1 && (
 												<span className="ml-2 text-sm text-gray-600">
-													({singleCoreComparisonWholeNumber}x)
+													({comparisons.singleCoreMultiplier}x)
 												</span>
 											)}
 										</div>
@@ -79,12 +95,14 @@ export function DeviceComparison({
 									<div className="flex justify-between items-center">
 										<p>Multi-Core Score: {device.multicore_score}</p>
 										<div className="text-right">
-											<span className={getComparisonColor(multiCoreComparison)}>
-												{getComparisonText(multiCoreComparison)}
+											<span
+												className={getComparisonColor(comparisons.multiCore)}
+											>
+												{getComparisonText(comparisons.multiCore)}
 											</span>
-											{multiCoreComparisonWholeNumber > 1 && (
+											{comparisons.multiCoreMultiplier > 1 && (
 												<span className="ml-2 text-sm text-gray-600">
-													({multiCoreComparisonWholeNumber}x)
+													({comparisons.multiCoreMultiplier}x)
 												</span>
 											)}
 										</div>

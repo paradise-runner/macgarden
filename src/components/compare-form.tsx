@@ -25,12 +25,20 @@ export function CompareForm({ initialDevices = [null, null] }: Props) {
 	const [selectedDevices, setSelectedDevices] =
 		useState<(Device | null)[]>(initialDevices);
 	const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+	const [selectedYear, setSelectedYear] = useState<string>("All");
 
 	useEffect(() => {
 		getDevices().then(setDevices);
 	}, []);
 
 	const modelTypes = getModelTypes(devices);
+	const years = Array.from(
+		new Set(
+			devices.map((device) => device.name.match(/\d{4}/g) || []).map(Number),
+		),
+	)
+		.filter(Boolean)
+		.sort((a, b) => b - a);
 
 	const handleCompare = () => {
 		if (selectedDevices[0] && selectedDevices[1]) {
@@ -43,17 +51,32 @@ export function CompareForm({ initialDevices = [null, null] }: Props) {
 	return (
 		<Card>
 			<CardContent className="space-y-6 pt-6">
-				<ToggleGroup
-					type="multiple"
-					value={selectedTypes}
-					onValueChange={setSelectedTypes}
-				>
-					{modelTypes.map((type) => (
-						<ToggleGroupItem key={type} value={type} size="sm">
-							{type}
-						</ToggleGroupItem>
-					))}
-				</ToggleGroup>
+				<div className="flex items-center justify-center gap-4">
+					<Select value={selectedYear} onValueChange={setSelectedYear}>
+						<SelectTrigger className="w-[100px]">
+							<SelectValue placeholder="Filter by Year" />
+						</SelectTrigger>
+						<SelectContent>
+							<SelectItem value="All">All Years</SelectItem>
+							{years.map((year) => (
+								<SelectItem key={year} value={year.toString()}>
+									{year}
+								</SelectItem>
+							))}
+						</SelectContent>
+					</Select>
+					<ToggleGroup
+						type="multiple"
+						value={selectedTypes}
+						onValueChange={setSelectedTypes}
+					>
+						{modelTypes.map((type) => (
+							<ToggleGroupItem key={type} value={type} size="sm">
+								{type}
+							</ToggleGroupItem>
+						))}
+					</ToggleGroup>
+				</div>
 
 				<div className="grid md:grid-cols-2 gap-4">
 					{[0, 1].map((index) => (
@@ -81,8 +104,12 @@ export function CompareForm({ initialDevices = [null, null] }: Props) {
 									{devices
 										.filter(
 											(d) =>
-												selectedTypes.length === 0 ||
-												selectedTypes.some((type) => d.name.includes(type)),
+												(selectedTypes.length === 0 ||
+													selectedTypes.some((type) =>
+														d.name.includes(type),
+													)) &&
+												(selectedYear === "All" ||
+													d.name.match(/\d{4}/g)?.[0] === selectedYear),
 										)
 										.map((device) => (
 											<SelectItem

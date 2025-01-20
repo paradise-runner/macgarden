@@ -104,10 +104,10 @@ Enjoy exploring Mac performance stats!
 
 Exciting features in development:
 - Search functionality in device selection dropdowns
-- Filter devices by release year
-- Performance trend visualization
+- ~~Filter devices by release year~~
+- ~~Performance trend visualization~~
 - Dark mode support
-- Export comparison data
+- ~~Export comparison data~~
 
 ## Contributing
 

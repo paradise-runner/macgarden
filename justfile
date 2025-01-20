@@ -21,5 +21,7 @@ lint:
     bun run lint
 fmt:
     bun run format
+format:
+    just fmt
 check:
      bun run check-formatting && just lint
