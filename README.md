@@ -9,6 +9,8 @@
 [![Code Quality](https://github.com/paradise-runner/macgarden/actions/workflows/code-quality.yml/badge.svg?branch=main)](https://github.com/paradise-runner/macgarden/actions/workflows/code-quality.yml)
 [![codecov](https://codecov.io/gh/paradise-runner/macgarden/graph/badge.svg?token=E4ZVSUXUQR)](https://codecov.io/gh/paradise-runner/macgarden)
 
+**Visit the site: [themacgarden.com](https://themacgarden.com)**
+
 ## Table of Contents
 
 - [Overview](#overview)
