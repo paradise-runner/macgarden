@@ -9,7 +9,7 @@ import {
 	Title,
 	Tooltip,
 	Legend,
-	ChartData,
+	type ChartData,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { parseJSON, getYear } from "date-fns";
@@ -59,7 +59,7 @@ type Device = {
 export function getYearFromDescription(description: string): number | null {
 	const match = description.match(/\b\d{4}\b/);
 	if (match) {
-		return parseInt(match[0], 10);
+		return Number.parseInt(match[0], 10);
 	}
 	return null;
 }

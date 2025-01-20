@@ -13,10 +13,10 @@ describe('Device Comparison', () => {
     cy.get('[role="group"]').find('button').first().click()
     
     // Select first device
-    cy.get('[role="combobox"]').first().click()
+    cy.get('[role="combobox"]').eq(1).click()
     cy.get('[role="option"]').first().click()
-    
     // Select second device
+    cy.get('[role="group"]').find('button').eq(1).click()  
     cy.get('[role="combobox"]').last().click()
     cy.get('[role="option"]').last().click()
     
@@ -27,8 +27,9 @@ describe('Device Comparison', () => {
   it('should navigate to comparison results', () => {
     // Select devices
     cy.get('[role="group"]').find('button').first().click()
-    cy.get('[role="combobox"]').first().click()
+    cy.get('[role="combobox"]').eq(1).click()
     cy.get('[role="option"]').first().click()
+    // cy.get('[role="group"]').find('button').eq(1).click()
     cy.get('[role="combobox"]').last().click()
     cy.get('[role="option"]').last().click()
     
@@ -44,6 +45,6 @@ describe('Device Comparison', () => {
     // Visit a direct comparison URL (adjust IDs as needed)
     cy.visit('/compare?device1=526&device2=513')
     cy.get('.device-comparison').should('exist')
-    cy.get('[role="combobox"]').should('have.length', 2)
+    cy.get('[role="combobox"]').should('have.length', 3)
   })
 })
