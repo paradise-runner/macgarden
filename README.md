@@ -1,4 +1,6 @@
-# Macgarden ![Mac Garden Screenshot](example.png)
+# Macgarden
+
+<img src="https://raw.githubusercontent.com/paradise-runner/macgarden/main/public/icon.svg" alt="Macgarden Logo" width="200"/>
 
 ![License](https://img.shields.io/badge/license-GPL--3.0-yellow)
 ![Next.js](https://img.shields.io/badge/Next.js-15.1-green)
@@ -26,6 +28,8 @@
 ## Overview
 
 A simple website showing Mac performance data. The data is fetched from the Geekbench Browser API and displayed in a user-friendly way for easy comparison. The website is built using Next.js, Tailwind CSS, and TypeScript. It is hosted on Cloudflare Pages. The data is fetched and stored in a JSON file for faster loading times.
+
+<img src="https://raw.githubusercontent.com/paradise-runner/macgarden/main/example.png" alt="Macgarden Site" width="600"/>
 
 ## Prerequisites
 
