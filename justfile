@@ -12,9 +12,9 @@ update:
     sed -i '' "s/const deviceData = .*/const deviceData = $(jq -c . ./public/data.json);/g" src/lib/devices.ts
     sed -i '' '/devices: \[/,$d' src/lib/devices.ts
 fresh-start:
-    just download && just update && just start
+    just download && just update && just format && just start
 fresh-deploy:
-    just download && just update && just deploy
+    just download && just update&& just format && just deploy
 test:
     bun run test:e2e
 lint:
